@@ -15,20 +15,20 @@ namespace SportsRentalSystem
     public partial class Clients
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clients()
+        public Ingredients ()
         {
-            this.Rentals = new HashSet<Rentals>();
+            this.Calculator = new HashSet<Calculator>();
         }
     
-        public int ClientID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public System.DateTime RegistrationDate { get; set; }
+        public int IngredientsID { get; set; }
+        public string Name { get; set; }
+        public int PurchasePrice { get; set; }
+        public int PurchaseUnit { get; set; }
+        public int ConsumptionUnit { get; set; }
+        public int PricePerUnit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rentals> Rentals { get; set; }
     }
 }
+
