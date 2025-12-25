@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="999d45466e104759b07a725190e8aed3" Name="Diagram1">
+        <EntityTypeShape EntityType="SportsRentalSystemModel.Categories" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsRentalSystemModel.Clients" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsRentalSystemModel.Employees" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsRentalSystemModel.Equipment" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsRentalSystemModel.Rentals" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsRentalSystemModel.Returns" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsRentalSystemModel.Statuses" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="SportsRentalSystemModel.FK__Equipment__Categ__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="SportsRentalSystemModel.FK__Rentals__ClientI__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="SportsRentalSystemModel.FK__Equipment__Statu__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="SportsRentalSystemModel.FK__Rentals__Equipme__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="SportsRentalSystemModel.FK__Returns__RentalI__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="SportsRentalSystemModel.FK_Rentals_Employees" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
