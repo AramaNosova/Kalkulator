@@ -1,0 +1,94 @@
+<Window x:Class="ConfectioneryCalculator.Views.RecipeEditorDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Редактор рецепта" Height="600" Width="1200">
+    
+    <Grid Background="#F5F0E6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Левая часть: Добавление ингредиентов -->
+        <GroupBox Header="Добавить ингредиент" Grid.Column="0" Margin="10">
+            <StackPanel>
+                <Label Content="Ингредиент:"/>
+                <ComboBox x:Name="IngredientComboBox" DisplayMemberPath="Name"/>
+                
+                <Label Content="Количество:"/>
+                <TextBox x:Name="QuantityTextBox"/>
+                
+                <Button Content="Добавить" Click="AddIngredientButton_Click" 
+                        Background="#A8C3B0" Margin="0,20,0,0"/>
+            </StackPanel>
+        </GroupBox>
+        
+        <!-- Правая часть: Ингредиенты в рецепте -->
+        <GroupBox Header="Ингредиенты в рецепте" Grid.Column="1" Margin="10">
+            <DockPanel>
+                <!-- Таблица ингредиентов -->
+                <DataGrid x:Name="RecipeDataGrid" 
+                          ItemsSource="{Binding recipeItems}"
+                          AutoGenerateColumns="False"
+                          Height="300">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ингредиент" 
+                                          Binding="{Binding Ingredient.Name}"/>
+                        <DataGridTextColumn Header="Количество" 
+                                          Binding="{Binding Quantity, StringFormat=F2}"/>
+                        <DataGridTextColumn Header="Ед." 
+                                          Binding="{Binding Ingredient.ConsumptionUnit}"/>
+                        <DataGridTextColumn Header="Стоимость" 
+                                          Binding="{Binding Cost, StringFormat=F2}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+                <!-- ⭐⭐ БЛОК РАСЧЕТА НАЦЕНКИ -->
+                <StackPanel DockPanel.Dock="Bottom" Margin="0,10,0,0">
+                    
+                    <!-- Поле ввода наценки -->
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Наценка, %:" VerticalAlignment="Center"/>
+                        <TextBox x:Name="MarginTextBox" Width="100" Margin="5,0"/>
+                    </StackPanel>
+                    
+                    <!-- Себестоимость сырья -->
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Content="Себестоимость сырья:" FontWeight="Bold"/>
+                        <Label x:Name="RawCostLabel" Content="0.00 ₽" 
+                               Foreground="#A8C3B0" FontWeight="Bold" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- ⭐⭐ ИТОГОВАЯ ЦЕНА (рассчитывается с наценкой) -->
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Content="Итоговая цена:" FontWeight="Bold" FontSize="14"/>
+                        <Label x:Name="FinalPriceLabel" Content="0.00 ₽" 
+                               Foreground="#F59546" FontWeight="Bold" FontSize="16"
+                               Margin="10,0,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- Прибыль и рентабельность -->
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Content="Прибыль:"/>
+                        <Label x:Name="ProfitLabel" Content="0.00 ₽" 
+                               Foreground="#A8C3B0" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
+                        <Label Content="Рентабельность:"/>
+                        <Label x:Name="ProfitabilityLabel" Content="0.0%" 
+                               Foreground="#A8C3B0" Margin="10,0,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- Кнопки -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="Удалить" Background="#ED8F8F" 
+                                Click="DeleteButton_Click" Margin="0,0,10,0"/>
+                        <Button Content="Сохранить" Background="#A8C3B0" 
+                                Click="SaveButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+        </GroupBox>
+    </Grid>
+</Window>
