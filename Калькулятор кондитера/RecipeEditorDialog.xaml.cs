@@ -24,45 +24,25 @@ namespace ConfectioneryCalculator.Views
         
         private void InitializeControls()
         {
-            // Загружаем ингредиенты в комбобокс
             var ingredients = dbContext.Ingredients.ToList();
             IngredientComboBox.ItemsSource = ingredients;
-            
-            // Устанавливаем начальную наценку
-            MarginTextBox.Text = "50"; // 50% по умолчанию
-            
-            // Привязываем обработчик изменения наценки
+            MarginTextBox.Text = "50";
             MarginTextBox.TextChanged += MarginTextBox_TextChanged;
-            
-            // Обновляем расчет при загрузке
             UpdateCalculations();
         }
-        
-        // ⭐⭐ КЛЮЧЕВОЙ МЕТОД: Расчет итоговой цены с наценкой
         private void CalculateFinalPrice()
         {
             try
             {
-                // 1. Рассчитываем себестоимость сырья
                 decimal rawCost = CalculateRawCost();
-                
-                // 2. Получаем наценку из TextBox
+
                 decimal marginPercent = decimal.Parse(MarginTextBox.Text);
-                
-                // 3. ⭐ РАСЧЕТ НАЦЕНКИ ПО ФОРМУЛЕ:
                 // Итоговая цена = Сырьевая себестоимость × (1 + Наценка/100)
                 decimal marginMultiplier = 1 + (marginPercent / 100);
                 decimal finalPrice = rawCost * marginMultiplier;
-                
-                // 4. Отображаем результат
+
                 FinalPriceLabel.Content = $"{finalPrice:F2} ₽";
-                
-                // 5. Рассчитываем прибыль и рентабельность
-                decimal profit = finalPrice - rawCost;
-                decimal profitability = (profit / rawCost) * 100;
-                
-                ProfitLabel.Content = $"{profit:F2} ₽";
-                ProfitabilityLabel.Content = $"{profitability:F1} %";
+
             }
             catch (Exception)
             {
@@ -130,3 +110,4 @@ namespace ConfectioneryCalculator.Views
         // ... остальной код ...
     }
 }
+
