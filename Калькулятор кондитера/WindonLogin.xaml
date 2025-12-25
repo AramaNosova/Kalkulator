@@ -1,0 +1,242 @@
+﻿<Window x:Class="SportsRentalSystem.WindonLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:SportsRentalSystem"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="Transparent"
+        Title="Авторизация - Система учета проката спортивного оборудования" MouseDown="Border_MouseDown"
+        Height="500" Width="900">
+
+    <Border CornerRadius="10 10 10 10" BorderThickness="2 2 2 2" Background="White">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="Gray" Offset="0.5"/>
+                <GradientStop Color="Black" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Grid>
+            <!-- Фоновое изображение -->
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\Lenovo\Downloads\fonSport.jpg" Stretch="Fill" Opacity="0.1"/>
+            </Grid.Background>
+
+            <!-- Панель управления -->
+            <StackPanel x:Name="pnlControlBar" 
+                        Orientation="Horizontal"
+                        FlowDirection="RightToLeft"
+                        Background="Transparent"
+                        VerticalAlignment="Top" 
+                        Margin="0,10,0,0">
+                <Button x:Name="btnClose" Cursor="Hand" Style="{StaticResource controlButton}"
+                        Click="Close">
+                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="CloseBoxOutline" Style="{StaticResource controlButtonIcon}"/>
+                    <Button.ToolTip>
+                        <ToolTip Placement="MousePoint">Закрыть</ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button x:Name="btnMax" Cursor="Hand" Style="{StaticResource controlButton}"
+                        Click="Maximize">
+                    <iconPacks:PackIconMaterial Width="15" Height="15" Kind="MinusBoxOutline" Style="{StaticResource controlButtonIcon}"/>
+                    <Button.ToolTip>
+                        <ToolTip Placement="MousePoint">
+                            <TextBlock x:Name="ToolTip" Text="Развернуть"/>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+                <Button x:Name="btnMinimize" Cursor="Hand" Style="{StaticResource controlButton}"
+                        Click="Minimize">
+                    <iconPacks:PackIconMaterial Kind="WindowMinimize" Width="15" Height="15" Style="{StaticResource controlButtonIcon}"/>
+                    <Button.ToolTip>
+                        <ToolTip Placement="MousePoint">Свернуть</ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+
+            <!-- Основное содержимое -->
+            <Grid Margin="40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Левая часть - приветствие -->
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,40,0">
+                    <TextBlock 
+                               FontSize="28" 
+                               FontWeight="Bold" 
+                               Foreground="{StaticResource LoginPrimaryColor}"
+                               Margin="0,0,0,15"><Run Text="🏄 "/><Run Text="Спорт Про"/></TextBlock>
+                    <TextBlock Text="Система учета проката спортивного оборудования" 
+                               FontSize="16" 
+                               Foreground="{StaticResource LoginTextColor}"
+                               Margin="0,0,0,30"
+                               TextWrapping="Wrap"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,5">
+                        <iconPacks:PackIconMaterial Kind="CheckCircle" 
+                                                   Foreground="{StaticResource LoginPrimaryColor}" 
+                                                   Width="20" Height="20"
+                                                   Margin="0,0,10,0"/>
+                        <TextBlock Text="Учет оборудования и инвентаря" 
+                                   FontSize="14" 
+                                   Foreground="{StaticResource LoginTextColor}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                        <iconPacks:PackIconMaterial Kind="CheckCircle" 
+                                                   Foreground="{StaticResource LoginPrimaryColor}" 
+                                                   Width="20" Height="20"
+                                                   Margin="0,0,10,0"/>
+                        <TextBlock Text="Управление клиентами и прокатом" 
+                                   FontSize="14" 
+                                   Foreground="{StaticResource LoginTextColor}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                        <iconPacks:PackIconMaterial Kind="CheckCircle" 
+                                                   Foreground="{StaticResource LoginPrimaryColor}" 
+                                                   Width="20" Height="20"
+                                                   Margin="0,0,10,0"/>
+                        <TextBlock Text="Автоматическое формирование отчетов" 
+                                   FontSize="14" 
+                                   Foreground="{StaticResource LoginTextColor}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Разделитель -->
+                <Rectangle Grid.Column="1" 
+                          Width="1" 
+                          Fill="#E0E0E0" 
+                          VerticalAlignment="Center" 
+                          Height="200"/>
+
+                <!-- Правая часть - форма авторизации -->
+                <Border Grid.Column="2" 
+                       Background="White" 
+                       CornerRadius="10" 
+                       Padding="25"
+                       BorderThickness="1"
+                       BorderBrush="#E0E0E0"
+                       VerticalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Color="#40000000"/>
+                    </Border.Effect>
+
+                    <StackPanel>
+                        <!-- Заголовок формы -->
+                        <DockPanel Margin="0,0,0,20">
+                            <StackPanel>
+                                <TextBlock Text="Авторизация" 
+                                          FontSize="20" 
+                                          FontWeight="Bold"
+                                          Foreground="{StaticResource LoginPrimaryColor}"
+                                          Margin="0,0,0,5"/>
+                                <TextBlock Text="Войдите в систему" 
+                                          FontSize="12" 
+                                          Foreground="{StaticResource LoginTextColor}"/>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <iconPacks:PackIconMaterial Kind="ShieldAccount" 
+                                                           Foreground="{StaticResource LoginPrimaryColor}"
+                                                           Width="30" Height="30"/>
+                            </StackPanel>
+                        </DockPanel>
+
+                        <!-- Поле логина -->
+                        <StackPanel Margin="0,0,0,15">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <iconPacks:PackIconMaterial Kind="Account" 
+                                                           Foreground="{StaticResource LoginPrimaryColor}"
+                                                           Width="16" Height="16"
+                                                           Margin="0,0,8,0"/>
+                                <TextBlock Text="Логин" 
+                                          FontWeight="SemiBold"
+                                          Foreground="{StaticResource LoginTextColor}"/>
+                            </StackPanel>
+                            <TextBox x:Name="txtUsername" Text="p.ivanov@sportsrent.ru"
+                                    Height="45" 
+                                    Padding="10"
+                                    FontSize="14"
+                                    Background="{StaticResource LoginLightGray}"
+                                    BorderBrush="#CCCCCC"
+                                    BorderThickness="1"
+                                    />
+                        </StackPanel>
+
+                        <!-- Поле пароля -->
+                        <StackPanel Margin="0,0,0,20">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <iconPacks:PackIconMaterial Kind="Lock" 
+                                                           Foreground="{StaticResource LoginPrimaryColor}"
+                                                           Width="16" Height="16"
+                                                           Margin="0,0,8,0"/>
+                                <TextBlock Text="Пароль" 
+                                          FontWeight="SemiBold"
+                                          Foreground="{StaticResource LoginTextColor}"/>
+                            </StackPanel>
+                            <Grid>
+                                <PasswordBox x:Name="txtPassword"
+                                            Height="45" 
+                                            Padding="10"
+                                            FontSize="16"
+                                            Background="{StaticResource LoginLightGray}"
+                                            BorderBrush="#CCCCCC"
+                                            BorderThickness="1"
+                                            PasswordChar="•" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                                <TextBox x:Name="txtPasswordVisible" Text="password123"
+                                            Height="45" 
+                                            Padding="10"
+                                            FontSize="16"
+                                            Background="{StaticResource LoginLightGray}"
+                                            BorderBrush="#CCCCCC"
+                                            BorderThickness="1"
+                                            Visibility="Collapsed" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                                <Button x:Name="btnTogglePassword" 
+                                       Background="Transparent" 
+                                       BorderThickness="0"
+                                       HorizontalAlignment="Right"
+                                       Width="35"
+                                       Height="35"
+                                       Cursor="Hand"
+                                       Click="btnTogglePassword_Click"
+                                       ToolTip="Показать/скрыть пароль">
+                                    <iconPacks:PackIconMaterial Kind="Eye" 
+                                                               Foreground="{StaticResource LoginTextColor}"
+                                                               Width="16" Height="16"/>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Кнопка входа -->
+                        <Button x:Name="btnLogin" 
+                               Content="ВОЙТИ" 
+                               Style="{StaticResource BlueButtonStyle}"
+                               Height="40"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Click="btnLogin_Click"
+                               Cursor="Hand"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Футер -->
+            <Border Background="{StaticResource LoginLightGray}" 
+                   CornerRadius="0,0,8,8" 
+                   VerticalAlignment="Bottom"
+                   Height="30">
+                <TextBlock Text="Sports System v1.0 © 2024" 
+                          FontSize="10" 
+                          Foreground="{StaticResource LoginTextColor}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
